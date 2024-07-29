@@ -17,6 +17,7 @@ A python framework for the [CRYSTAL](https://www.crystal.unito.it) code. Forked 
 - Band structure and DOSS
 - Elastic properties (Young and shear moduli, linear compressibility, Poisson ratio) 
 - Harmonic and anharmonic IR and Raman spectra
+- 2D plotting of charge density.
 ## Installation 💻
 Public releases of the code are distributed through Pypi.
 ### Prerequisites 📦
