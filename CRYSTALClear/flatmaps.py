@@ -25,8 +25,7 @@ class ElectricChargeDensity(Properties_output):
         for i in range(0, self.nrow):
             for j in range(0, self.ncol):
                 self.__meshy[i, j] = ((ab/self.nrow)*i) * np.sqrt(1 - self.cosxy**2)
-                self.__meshx[i, j] = (((cb/self.ncol)*j) * np.sqrt(1 - self.cosxy**2)) + \
-                        (((ab/self.nrow)*i) * self.cosxy)
+                self.__meshx[i, j] = (((cb/self.ncol)*j) * np.sqrt(1 - self.cosxy**2)) + (((ab/self.nrow)*i) * self.cosxy)
         self.__meshx_max = np.amax(self.__meshx)
         self.__meshy_max = np.amax(self.__meshy)
         self.__meshx_min = np.amin(self.__meshx)
@@ -97,8 +96,8 @@ class ElectricChargeDensity(Properties_output):
         fig, ax = plt.subplots()
         ax.contourf(self.__meshx, self.__meshy, self.density_map, levels=levels, cmap=cmap)
         if self.units == "Angstrom":
-            ax.set_xlabel("$\AA$")
-            ax.set_ylabel("$\AA$")
+            ax.set_xlabel(r"$\AA$")
+            ax.set_ylabel(r"$\AA$")
         elif self.units == "Bohr":
             ax.set_xlabel("a.u.")
             ax.set_ylabel("a.u.")
@@ -295,8 +294,8 @@ class OrbitalMagnetizationField(Properties_output):
         ax.contourf(self.__meshx, self.__meshy, self.mod_dens, levels=levels, cmap=cmap)
         ax.quiver(self.__meshprojx, self.__meshprojy, self.projx, self.projy, scale=scale)
         if self.units == "Angstrom":
-            ax.set_xlabel("$\AA$")
-            ax.set_ylabel("$\AA$")
+            ax.set_xlabel(r"$\AA$")
+            ax.set_ylabel(r"$\AA$")
         elif self.units == "Bohr":
             ax.set_xlabel("a.u.")
             ax.set_ylabel("a.u.")
@@ -494,8 +493,8 @@ class ChargeCurrentField(Properties_output):
         ax.contourf(self.__meshx, self.__meshy, self.mod_dens, levels=levels, cmap=cmap)
         ax.quiver(self.__meshprojx, self.__meshprojy, self.projx, self.projy, scale=scale)
         if self.units == "Angstrom":
-            ax.set_xlabel("$\AA$")
-            ax.set_ylabel("$\AA$")
+            ax.set_xlabel(r"$\AA$")
+            ax.set_ylabel(r"$\AA$")
         elif self.units == "Bohr":
             ax.set_xlabel("a.u.")
             ax.set_ylabel("a.u.")
@@ -738,8 +737,8 @@ class SpinCurrentField(Properties_output):
         ax1.contourf(self.__meshx, self.__meshy, self.mod_dens_JX, levels=levels, cmap=cmap)
         ax1.quiver(self.__meshprojx, self.__meshprojy, self.projx_JX, self.projy_JX, scale=scale)
         if self.units == "Angstrom":
-            ax1.set_xlabel("$\AA$")
-            ax1.set_ylabel("$\AA$")
+            ax1.set_xlabel(r"$\AA$")
+            ax1.set_ylabel(r"$\AA$")
         elif self.units == "Bohr":
             ax1.set_xlabel("a.u.")
             ax1.set_ylabel("a.u.")
@@ -760,8 +759,8 @@ class SpinCurrentField(Properties_output):
         ax2.contourf(self.__meshx, self.__meshy, self.mod_dens_JY, levels=levels, cmap=cmap)
         ax2.quiver(self.__meshprojx, self.__meshprojy, self.projx_JY, self.projy_JY, scale=scale)
         if self.units == "Angstrom":
-            ax2.set_xlabel("$\AA$")
-            ax2.set_ylabel("$\AA$")
+            ax2.set_xlabel(r"$\AA$")
+            ax2.set_ylabel(r"$\AA$")
         elif self.units == "Bohr":
             ax2.set_xlabel("a.u.")
             ax2.set_ylabel("a.u.")
@@ -782,8 +781,8 @@ class SpinCurrentField(Properties_output):
         ax3.contourf(self.__meshx, self.__meshy, self.mod_dens_JZ, levels=levels, cmap=cmap)
         ax3.quiver(self.__meshprojx, self.__meshprojy, self.projx_JZ, self.projy_JZ, scale=scale)
         if self.units == "Angstrom":
-            ax3.set_xlabel("$\AA$")
-            ax3.set_ylabel("$\AA$")
+            ax3.set_xlabel(r"$\AA$")
+            ax3.set_ylabel(r"$\AA$")
         elif self.units == "Bohr":
             ax3.set_xlabel("a.u.")
             ax3.set_ylabel("a.u.")
