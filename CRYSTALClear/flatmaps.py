@@ -18,18 +18,20 @@ class ElectricChargeDensity(Properties_output):
         self.__scaled = False
 
     def __generate_mesh(self):
-        ab = np.linalg.norm(self.a - self.b)
-        cb = np.linalg.norm(self.c - self.b)
+        self.ab = np.linalg.norm(self.a - self.b)
+        self.cb = np.linalg.norm(self.c - self.b)
         self.__meshx = np.zeros((self.nrow, self.ncol), dtype=float)
         self.__meshy = np.zeros((self.nrow, self.ncol), dtype=float)
         for i in range(0, self.nrow):
             for j in range(0, self.ncol):
-                self.__meshy[i, j] = ((ab/self.nrow)*i) * np.sqrt(1 - self.cosxy**2)
-                self.__meshx[i, j] = (((cb/self.ncol)*j) * np.sqrt(1 - self.cosxy**2)) + (((ab/self.nrow)*i) * self.cosxy)
+                self.__meshx[i, j] = ((self.ab/self.nrow)*i) * np.sqrt(1 - self.cosxy**2)
+                self.__meshy[i, j] = ((self.cb/self.ncol)*j) + (((self.ab/self.nrow)*i) * self.cosxy)
         self.__meshx_max = np.amax(self.__meshx)
         self.__meshy_max = np.amax(self.__meshy)
         self.__meshx_min = np.amin(self.__meshx)
         self.__meshy_min = np.amin(self.__meshy)
+
+        self.surface = (self.cb)*np.sqrt(1-self.cosxy**2)*self.ab
 
     def __get_minmaxvalue(self):
         self.dens_min_value = np.amin(self.density_map)
@@ -83,6 +85,10 @@ class ElectricChargeDensity(Properties_output):
                 sign = np.sign(self.density_map[i, j])
                 self.density_map[i, j] = sign * math.log10(abs(self.density_map[i, j]))
         self.__get_minmaxvalue()
+
+    def scalar_scale(self, factor):
+        
+        self.density_map = self.density_map*factor
 
     def set_cmaprange(self, cmap_range: list, units="Angstrom"):
         if (len(cmap_range) > 2):

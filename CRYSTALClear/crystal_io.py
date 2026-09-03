@@ -3872,6 +3872,7 @@ class Properties_output:
         k = 0
         for j in range(0, self.ncol):
             for i in range(self.nrow - 1, -1, -1):
+            #for i in range(0, self.nrow):
                 self.density_map[i, j] = density_temp[k]
                 k += 1
 
